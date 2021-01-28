@@ -38,7 +38,7 @@ jobs:
   # and you must make sure your containers are built on the same Windows build (aka 1803).
 - job: Windows
   pool:
-    vmImage: 'vs2017-win2016'
+    vmImage: 'windows-2019'
   container: panisset/buildtools2019:latest
 
   steps:
