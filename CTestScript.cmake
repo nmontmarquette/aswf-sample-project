@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: Apache-2.0
-# Copyright Contributors to the ASWF Sample Projec
+# Copyright Contributors to the ASWF Sample Project
 
 # Example CTest script which runs the test suite and sends the results to a CDash dashboard.
 # Depends on the following environment variables, which should be set in your CI environment:
@@ -18,7 +18,8 @@ ctest_test()
 
 # CTEST_CDASH_AUTH_TOKEN should be set as an environment variable containing your CDash authorization token
 # Skip upload if it is not set (could happen for PR build in a fork for instance)
-if (DEFINED ENV{CTEST_CDASH_AUTH_TOKEN})
+#if (DEFINED ENV{CTEST_CDASH_AUTH_TOKEN})
+if(0)
 	ctest_submit(HTTPHEADER "Authorization: Bearer $ENV{CTEST_CDASH_AUTH_TOKEN}")
 else()
 	message(STATUS "CTEST_CDASH_AUTH_TOKEN not set, skipping upload to CDash")
