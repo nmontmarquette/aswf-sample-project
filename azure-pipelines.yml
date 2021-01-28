@@ -8,6 +8,7 @@
 
 trigger:
 - master
+- dev/*
 
 jobs:
 
