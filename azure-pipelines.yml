@@ -1,0 +1,79 @@
+# SPDX-License-Identifier: Apache-2.0
+# Copyright Contributors to the ASWF Sample Project
+#
+# A simple multi-platform Azure Pipelines definition to build, run test suite
+# and upload results to test dashboard. Using 'matrix' would reduce duplication
+# but there's no such thing as macOS containers. Could move the steps to a separate
+# YAML file.
+
+trigger:
+- master
+
+jobs:
+
+- job: Linux
+  pool:
+    vmImage: 'ubuntu-18.04'
+  container: aswf/ci-base:2020
+
+  steps:
+  - script: |
+      mkdir build
+      cd build
+      cmake ..
+      cmake --build .
+    displayName: Build
+  - script: |
+      ctest --verbose -S ../CTestScript.cmake
+    env:
+      CTEST_SOURCE_DIRECTORY: $(Build.SourcesDirectory)
+      CTEST_BUILD_NAME: $(Build.BuildNumber)
+      CTEST_SITE: $(Agent.MachineName)
+      CTEST_CDASH_AUTH_TOKEN: $(CTEST_CDASH_AUTH_TOKEN)
+    workingDirectory: build
+    displayName: Test
+
+  # Only the win1803 builders aka Windows Server Core 2016 SAC 1803 currently supports containers,
+  # and you must make sure your containers are built on the same Windows build (aka 1803).
+- job: Windows
+  pool:
+    vmImage: 'win1803'
+  container: panisset/buildtools2019:latest
+
+  steps:
+  - script: |
+      mkdir build
+      cd build
+      cmake ..
+      cmake --build .
+    displayName: Build
+  - script: |
+      ctest --verbose -S ../CTestScript.cmake
+    env:
+      CTEST_SOURCE_DIRECTORY: $(Build.SourcesDirectory)
+      CTEST_BUILD_NAME: $(Build.BuildNumber)
+      CTEST_SITE: $(Agent.MachineName)
+      CTEST_CDASH_AUTH_TOKEN: $(CTEST_CDASH_AUTH_TOKEN)
+    workingDirectory: build
+    displayName: Test
+
+- job: macOS
+  pool:
+    vmImage: 'macOS-latest'
+
+  steps:
+  - script: |
+      mkdir build
+      cd build
+      cmake ..
+      cmake --build .
+    displayName: Build
+  - script: |
+      ctest --verbose -S ../CTestScript.cmake
+    env:
+      CTEST_SOURCE_DIRECTORY: $(Build.SourcesDirectory)
+      CTEST_BUILD_NAME: $(Build.BuildNumber)
+      CTEST_SITE: $(Agent.MachineName)
+      CTEST_CDASH_AUTH_TOKEN: $(CTEST_CDASH_AUTH_TOKEN)
+    workingDirectory: build
+    displayName: Test
