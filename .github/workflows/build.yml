@@ -1,0 +1,85 @@
+name: CMake
+​
+on: [push]
+​
+env:
+  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
+  BUILD_TYPE: Release
+​
+jobs:
+  build:
+    # The CMake configures and build commands are platform agnostic and should work equally
+    # well on Windows or Mac.  You can convert this to a matrix build if you need
+    # cross-platform coverage.
+    # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
+    runs-on: ubuntu-latest
+    container: debian:testing-slim
+​
+    steps:
+    - name: Configure APT
+      env:
+        DEBIAN_FRONTEND: noninteractive
+      run: |
+        # Paper over occasional network flakiness of some mirrors.
+        echo 'Acquire::Retries "10";' > /etc/apt/apt.conf.d/80retry
+        # Do not install recommended packages
+        echo 'APT::Install-Recommends "false";' > /etc/apt/apt.conf.d/80recommends
+        # Do not install suggested packages
+        echo 'APT::Install-Suggests "false";' > /etc/apt/apt.conf.d/80suggests
+        # Assume yes
+        echo 'APT::Get::Assume-Yes "true";' > /etc/apt/apt.conf.d/80forceyes
+        # Fix broken packages
+        echo 'APT::Get::Fix-Missing "true";' > /etc/apt/apt.conf.d/80fixmissing
+​
+    - name: Install Dependencies
+      run: |
+        rm -rf /var/lib/apt/lists/*;
+        apt-get update;
+        apt-get install clang++-11 \
+                        clang-tidy-11 \
+                        clang-tools-11 \
+                        cmake \
+                        curl \
+                        doxygen \
+                        g++ \
+                        gcc \
+                        git \
+                        googletest \
+                        graphviz \
+                        make \
+                        python3-sphinx \
+                        python3-sphinx-rtd-theme;
+​
+    # Clone this repo
+    - name: Checkout
+      uses: actions/checkout@v2
+      
+    - name: Create Build Environment
+      # Some projects don't allow in-source building, so create a separate build directory
+      # We'll use this as our working directory for all subsequent commands
+      run: |
+        echo ${{github.workspace}};
+        cmake -E make_directory ${{github.workspace}}/build;
+        ls -lash ${{github.workspace}}/build;
+        ls -lash ${{github.workspace}};
+​
+​
+    - name: Configure CMake
+      # Note the current convention is to use the -S and -B options here to specify source 
+      # and build directories, but this is only available with CMake 3.13 and higher.  
+      # The CMake binaries on the Github Actions machines are (as of this writing) 3.12
+      run: |
+        chdir ${{github.workspace}}/build && cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE;
+​
+    - name: Build
+      # Execute the build.  You can specify a specific target with "--target <NAME>"
+      run: |
+        chdir ${{github.workspace}}/build && cmake --build . --config $BUILD_TYPE;
+​
+    - name: Test
+      # Execute tests defined by the CMake configuration.  
+      # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
+      run: |
+        chdir ${{github.workspace}}/build && ctest -C $BUILD_TYPE;à
+
+
