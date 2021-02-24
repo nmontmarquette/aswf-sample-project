@@ -17,4 +17,3 @@ The following assumes that the current [COMMUNITY NAME] library version number i
 - [ ] Post a release announcement to the [COMMUNITY NAME] public announcement mailing list.
 - [ ] In preparation for the next release, change the correct #define in the project's base version include file.  Unless it is known that the next release will include API- or ABI-breaking changes, increment only the patch number to begin with (in this case, from 6.1.0 to 6.1.1).  Update any references to the project version number in the documentation source files, and add a "Version 6.1.1 - In development" section to the `CHANGES` release notes file.  Open a pull request to merge these changes into `PROJECT/master`.
 - [ ] Add a "[COMMUNITY NAME]_6.1.1" version to the ticketing system.
-

@@ -32,4 +32,3 @@ _Assuming [COMMUNITY NAME] defines a callable API / library, a discussion of how
 ## Data and Metadata Implications
 
 _A discussion of issues relating to the data model implemented by the project such as correctness, confidentiality, potential misuse..._
-

@@ -18,15 +18,15 @@ This is a checklist for TSC's to review as part of the intake process. The TSC s
     - [ ] Approved by TSC
     - [ ] Filed ( create pull request against [foundation repo](https://github.com/AcademySoftwareFoundation/foundation) )
 - Current tools
-  - [ ] Source Control (Github, GitLab, something else )	
-	- [ ] Issue/feature tracker (JIRA, GitHub issues)	
-  - Collaboration tools 
+  - [ ] Source Control (Github, GitLab, something else )
+	- [ ] Issue/feature tracker (JIRA, GitHub issues)
+  - Collaboration tools
     - [ ] Mailing lists
       - [ ] Move to groups.io ( create [issue on foundation repo](https://github.com/AcademySoftwareFoundation/foundation/issues/new) to setup/transfer
     - [ ] Slack or IRC ( create [issue on foundation repo](https://github.com/AcademySoftwareFoundation/foundation/issues/new) to setup project channel on [ASWF Slack](https://slack.aswf.io)
     - [ ] Forums
   - [ ] Website
-  - [ ] CI/build environment	
+  - [ ] CI/build environment
 - Project assets
   - [ ] Domain name	( create [issue on foundation repo](https://github.com/AcademySoftwareFoundation/foundation/issues/new) to setup/transfer
 	- [ ] Social media accounts	( create [issue on foundation repo](https://github.com/AcademySoftwareFoundation/foundation/issues/new) to setup/transfer

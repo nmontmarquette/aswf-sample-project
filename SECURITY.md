@@ -27,7 +27,7 @@ forward to the project's Technical Steering Committee or a small group
 of trusted maintainers.
 
 A typical security policy is to respond to vulernability reports
-within 14 days. 
+within 14 days.
 
 ## Common Vulnerabilities and Exposures (CVE)
 
@@ -111,7 +111,7 @@ which versions of the project the vulnerability exists in.
 
 For example, an entry from OpenEXR:
 
-* [CVE-2020-15306](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-15306) 2.0.0, 2.0.1, 2.1.0, 2.2.0, 2.2.1, 2.3.0, 2.4.0, 2.4.1, 2.5.0, 2.5.1 
+* [CVE-2020-15306](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-15306) 2.0.0, 2.0.1, 2.1.0, 2.2.0, 2.2.1, 2.3.0, 2.4.0, 2.4.1, 2.5.0, 2.5.1
 
 Project release notes should also identify any CVE's that are resolved
 by that release.

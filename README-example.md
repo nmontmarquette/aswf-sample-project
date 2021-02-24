@@ -27,4 +27,3 @@ do not report in the issue tracker but instead email
 security@_project_.org. Refer to
 [SECURITY-example.md](SECURITY-example.md) for more information about
 the project security policy.
-
