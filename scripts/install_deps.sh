@@ -1,21 +1,21 @@
 #!/bin/bash
-#
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 function determine_windows_version {
-    ./install_deps_windows.bat
+    ${DIR}/install_deps_windows.bat
 }
 
 function determine_darwin_version {
-    ./install_deps_macos_10.15.sh
+    ${DIR}/install_deps_macos_10.15.sh
 }
 
 function determine_debian_version {
-    ./install_deps_debian_10.sh
+    ${DIR}/install_deps_debian_10.sh
 }
 
-function determine_ret_hat_version {
-    ./install_deps_debian_10.sh
-    echo -n "Hello from Red Hat-based distribution..."
+function determine_centos_version {
+    ${DIR}/install_deps_centos_8.sh
 }
 
 function determine_linux_distro {
