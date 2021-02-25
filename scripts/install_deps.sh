@@ -3,7 +3,8 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 function determine_windows_version {
-    ${DIR}/install_deps_windows.bat
+    #${DIR}/install_deps_windows.bat
+    sudo echo "Hello from Windows!"
 }
 
 function determine_darwin_version {
@@ -11,11 +12,11 @@ function determine_darwin_version {
 }
 
 function determine_debian_version {
-    ${DIR}/install_deps_debian_10.sh
+    sudo ${DIR}/install_deps_debian_10.sh
 }
 
 function determine_centos_version {
-    ${DIR}/install_deps_centos_8.sh
+    sudo ${DIR}/install_deps_centos_8.sh
 }
 
 function determine_linux_distro {
@@ -54,7 +55,7 @@ function determine_machine_type {
             determine_darwin_version
             ;;
         *Linux*)
-            determine_linux_version
+            determine_linux_distro
             ;;
         *) 
             echo "Unsupported base system: '${UNAME_STR}'"
