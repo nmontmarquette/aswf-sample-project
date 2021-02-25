@@ -1,7 +1,6 @@
-#
-# https://github.com/keepassxreboot/keepassxc/wiki/Set-up-Build-Environment-on-macOS
-#
+echo "Hello macOS!"
 brew install \
-    cmake \
-    qt5 libgcrypt argon2 qrencode libsodium asciidoctor \
-    libyubikey ykpers quazip
+    cmake    \
+    doxygen  \
+    graphviz
+

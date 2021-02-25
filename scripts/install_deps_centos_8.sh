@@ -1,3 +1,6 @@
+echo "Installing CentOS dependencies ..."
+
+apt-update 
 apt-get install -y        \
     asciidoctor           \
     bzip2                 \

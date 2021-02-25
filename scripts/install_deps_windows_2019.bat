@@ -5,6 +5,8 @@ REM * Windows 10 (xxxx) dependencies installation script
 REM *
 REM *************************************************************************
 
+ECHO "Hello from 'Windows'!"
+
 where /q choco
 IF ERRORLEVEL 1 (
     ECHO "Couldn't find 'choco' executable, was 'Chocolately' installed?"
