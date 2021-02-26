@@ -14,4 +14,4 @@ IF ERRORLEVEL 1 (
     EXIT /B
 )
 
-choco install qt-sdk
+REM choco install qt-sdk

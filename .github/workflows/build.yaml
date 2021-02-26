@@ -8,19 +8,23 @@
 #
 ##############################################################################
 
-name: build-documentation
+name: Build-Documentation
 
 on: [push]
 
 jobs:
   build:
-    runs-on: [ubuntu-20.04]
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        #os: [macOS-10.15, windows-2019, ubuntu-20.04]
+        os: [ubuntu-20.04]
 
     steps:
     - uses: actions/checkout@v2
 
     - name: Install Dependencies
-      run: sudo scripts/install_deps.sh docs
+      run: sudo scripts/install_deps.sh
 
-    - name: Build Documentation
-      run: scripts/build.sh docs
+    - name: Build
+      run: scripts/build_documentation.sh

@@ -1,0 +1,30 @@
+##############################################################################
+#
+# Copyright 2021 Autodesk, Inc. All rights reserved.
+#
+# Use of this software is subject to the terms of the Autodesk license
+# agreement provided at the time of installation or download, or which
+# otherwise accompanies this software in either electronic or hard copy form.
+#
+##############################################################################
+
+name: pre-commit
+
+# Possible hooks: https://docs.github.com/en/actions/reference/events-that-trigger-workflows#webhook-events
+on:
+  # Possible pull_request options: https://docs.github.com/en/actions/reference/events-that-trigger-workflows#pull_request
+  pull_request:
+  push:
+    # TODO: temporary, should be changed to 'main' only later on
+    branches: [main, cpp-port]
+
+jobs:
+  pre-commit:
+    # Official image list: https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml#software
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2  # v2 refers to the Github Action plugin version, not Python version, even plugin v1 was using Python 3 as default
+      with:
+        python-version: '3.9.1'      # Specifies a version available in the 'runs-on' image specified above
+    - uses: pre-commit/action@v2.0.0
