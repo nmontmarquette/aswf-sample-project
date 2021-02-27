@@ -1,14 +1,4 @@
-##############################################################################
-#
-# Copyright 2021 Autodesk, Inc. All rights reserved.
-#
-# Use of this software is subject to the terms of the Autodesk license
-# agreement provided at the time of installation or download, or which
-# otherwise accompanies this software in either electronic or hard copy form.
-#
-##############################################################################
-
-name: build-documentation
+name: Build-Documentation
 
 on: [push]
 
@@ -20,7 +10,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Install Dependencies
-      run: sudo scripts/install_deps.sh docs
+      run: sudo scripts/install_deps.sh
 
     - name: Build Documentation
-      run: scripts/build.sh docs
+      run: scripts/build_documentation.sh
