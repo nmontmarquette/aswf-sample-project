@@ -1,0 +1,105 @@
+/*******************************************************************************
+ *
+ * Copyright 2021 Autodesk, Inc. All rights reserved.
+ *
+ * Use of this software is subject to the terms of the Autodesk license
+ * agreement provided at the time of installation or download, or which
+ * otherwise accompanies this software in either electronic or hard copy form.
+ *
+ ******************************************************************************/
+
+@font-face {
+    font-family: 'ArtifaktElement';
+    src:url('https://fonts.autodesk.com/ArtifaktElement/EOT/Artifakt%20Element%20Regular.eot'); /* IE9 Compat Modes */
+    src:url('https://fonts.autodesk.com/ArtifaktElement/EOT/Artifakt%20Element%20Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('https://fonts.autodesk.com/ArtifaktElement/WOFF2/Artifakt%20Element%20Regular.woff2') format('woff2'), /* Super Modern Browsers */
+        url('https://fonts.autodesk.com/ArtifaktElement/WOFF/Artifakt%20Element%20Regular.woff') format('woff'), /* Pretty Modern Browsers */
+        url('https://fonts.autodesk.com/ArtifaktElement/TTF/Artifakt%20Element%20Regular.ttf')  format('truetype'); /* Safari, Android, iOS */
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'ArtifaktElement';
+    src:url('https://fonts.autodesk.com/ArtifaktElement/EOT/Artifakt%20Element%20Medium.eot'); /* IE9 Compat Modes */
+    src:url('https://fonts.autodesk.com/ArtifaktElement/EOT/Artifakt%20Element%20Medium.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('https://fonts.autodesk.com/ArtifaktElement/WOFF2/Artifakt%20Element%20Medium.woff2') format('woff2'), /* Super Modern Browsers */
+        url('https://fonts.autodesk.com/ArtifaktElement/WOFF/Artifakt%20Element%20Medium.woff') format('woff'), /* Pretty Modern Browsers */
+        url('https://fonts.autodesk.com/ArtifaktElement/TTF/Artifakt%20Element%20Medium.ttf')  format('truetype'); /* Safari, Android, iOS */
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'ArtifaktElement';
+    src:url('https://fonts.autodesk.com/ArtifaktElement/EOT/Artifakt%20Element%20Bold.eot'); /* IE9 Compat Modes */
+    src:url('https://fonts.autodesk.com/ArtifaktElement/EOT/Artifakt%20Element%20Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('https://fonts.autodesk.com/ArtifaktElement/WOFF2/Artifakt%20Element%20Bold.woff2') format('woff2'), /* Super Modern Browsers */
+        url('https://fonts.autodesk.com/ArtifaktElement/WOFF/Artifakt%20Element%20Bold.woff') format('woff'), /* Pretty Modern Browsers */
+        url('https://fonts.autodesk.com/ArtifaktElement/TTF/Artifakt%20Element%20Bold.ttf')  format('truetype'); /* Safari, Android, iOS */
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+/**
+ * Overall font styles.
+ */
+body,
+table,
+table.directory,
+div,
+p,
+dl,
+#projectname,
+#side-nav,
+#nav-tree .label,
+.title,
+.sm-dox a, .sm-dox a:focus, .sm-dox a:hover, .sm-dox a:active {
+    font-family: 'ArtifaktElement', sans-serif;
+}
+
+
+/**
+ * Style for the project name in the header.
+ */
+#projectname {
+    padding: 10px;
+    font-size: 250%;
+}
+
+
+/**
+ * Code fragment (targeted at code blocks in Markdown files).
+ */
+.textblock div.fragment {
+    padding: 15px;
+}
+
+
+/**
+ * Replace the prominent Doxygen logo in the footer with a text link.
+ */
+li.footer a:before {
+    content: "Doxygen";
+}
+li.footer img.footer {
+    display: none;
+}
+
+
+/**
+ * Fix for Markdown not allowing empty table headers.
+ *
+ * Rather than trying to construct a header-less table with embedded HTML,
+ * it is more appropriate to instead remove the table headers with CSS.
+ */
+ table.doxtable th:empty {
+    /**
+     * Note: Using `display: none;` does not work well here for empty and
+     * non-empty table header elements.
+     */
+    padding: 0;
+    border: 0;
+}

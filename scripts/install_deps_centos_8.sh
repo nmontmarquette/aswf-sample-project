@@ -1,4 +1,4 @@
-#!/bin/bahh
+#!/bin/bash
 
 # Possibly redundant, make sure variable is set by whatever environment 
 if [ -z ${EUID} ]; then
